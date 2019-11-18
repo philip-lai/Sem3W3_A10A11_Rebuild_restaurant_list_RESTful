@@ -15,14 +15,18 @@
         </div>
       </form>
 
-      {{!-- <form action="/sort" method="POST">
-        <select class="form-control" name="sortBy">
-          <option name="name">中文店名</option>
-          <option name="name_en">英文店名</option>
-          <option name="location">地址</option>
-        </select>
-        <button type="submit">Sort</button>
-      </form> --}}
+      <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle mt-3" data-toggle="dropdown">
+          排序選擇
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="/name_en-asc">依英文店名(A-Z)</a>
+          <a class="dropdown-item" href="/name_en-desc">依英文店名(Z-A)</a>
+          <a class="dropdown-item" href="/category-asc">依餐廳類別</a>
+          <a class="dropdown-item" href="/rating-asc">依餐廳評分(高分優先)</a>
+          <a class="dropdown-item" href="/rating-asc">依餐廳評分(低分優先)</a>
+        </div>
+      </div>
 
     </div>
   </div>
