@@ -1,0 +1,76 @@
+<!-- ./views/edit.handlebars -->
+<div class="container mt-3 mb-3">
+
+  <form action="/restaurants/{{{restaurant.id}}}/edit?_method=PUT" method="POST">
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">餐廳店名 : </span>
+      </div>
+      <input type="text" placeholder="餐廳店名" name="name" value="{{{restaurant.name}}}" class="form-control">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">英文店名 :</span>
+      </div>
+      <input type="text" placeholder="餐廳英文店名" name="name_en" value="{{{restaurant.name_en}}}" class="form-control">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">餐廳類型 :</span>
+      </div>
+      <input type="text" placeholder="餐廳類型" name="category" value="{{{restaurant.category}}}" class="form-control">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">餐廳地址 :</span>
+      </div>
+      <input type="text" placeholder="餐廳地址" name="location" value="{{{restaurant.location}}}" class="form-control">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">餐廳電話 :</span>
+      </div>
+      <input type="tel" placeholder="餐廳電話" name="phone" pattern="[0]{1}[2-9]{1} [0-9]{4} [0-9]{4}"
+        value="{{{restaurant.phone}}}" class="form-control">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">餐廳評分 :</span>
+      </div>
+      <input type="number" min="0" max="5" step="0.1" placeholder="0" name="rating" value="{{{restaurant.rating}}}"
+        class="form-control">
+    </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">Google Map Link :</span>
+      </div>
+      <input type="url" placeholder="Google Map Link" name="google_map" value="{{{restaurant.google_map}}}"
+        class="form-control">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">餐廳圖片連結 :</span>
+      </div>
+      <input type="url" placeholder="餐廳圖片連結" name="image" value="{{{restaurant.image}}}" class="form-control">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">餐廳描述 :</span>
+      </div>
+      <textarea name="description" placeholder="餐廳描述" cols="30" rows="10"
+        class="form-control">"{{{restaurant.description}}}"</textarea>
+    </div>
+
+    <button type="submit">編輯完畢並儲存</button>
+  </form>
+</div>
