@@ -36,10 +36,10 @@
 # 安裝說明
 #### 1. 開啟終端機，將專案下載至本機端
 
-      git clone https://github.com/philip-lai/Sem3W3_A10A11_Rebuild_restaurant_list.git
+      git clone https://github.com/philip-lai/Sem3W3_A10A11_Rebuild_restaurant_list_RESTful.git
 #### 2. 切換檔案路徑至專案資料夾，並安裝套件
 
-      cd Sem3W3_A10A11_Rebuild_restaurant_list
+      cd Sem3W3_A10A11_Rebuild_restaurant_list_RESTful
       npm install
 #### 3. 執行專案
       npm run dev
