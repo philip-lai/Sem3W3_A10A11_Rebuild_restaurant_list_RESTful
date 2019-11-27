@@ -11,6 +11,8 @@ const bodyParser = require('body-parser');
 // 引用 methodOverride
 const methodOverride = require('method-override')
 
+const session = require('express-session')
+
 // 告訴 express 使用 handlebars 當作 template engine 並預設 layout 是 main
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -23,6 +25,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // setting static files
 app.use(express.static('public'))
+
+app.use(session({
+  secret: 'your secret key',
+  resave: false,
+  saveUninitialized: true,
+}))
 
 // 設定連線到 mongoDB
 mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
