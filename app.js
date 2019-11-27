@@ -1,4 +1,8 @@
 const express = require('express')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const app = express()
 const mongoose = require('mongoose')
 // 引用 express-handlebars
@@ -76,6 +80,7 @@ app.use('/', require('./routes/home.js'))
 app.use('/restaurants', require('./routes/restaurant.js'))
 app.use('/search', require('./routes/search.js'))
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/auths'))
 
 
 //設定express port 3000
