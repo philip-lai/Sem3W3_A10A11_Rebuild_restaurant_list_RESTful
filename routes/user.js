@@ -10,7 +10,7 @@ router.get('/login', (req, res) => {
 
 // 登入檢查
 router.post('/login', (req, res) => {
-  res.send('login')
+  // res.send('login')
 })
 
 // 註冊頁面
@@ -19,8 +19,35 @@ router.get('/register', (req, res) => {
 })
 
 // 註冊檢查
-router.post('register', (req, res) => {
-  res.send('register')
+router.post('/register', (req, res) => {
+  const { name, email, password, password2 } = req.body
+  User.findOne({ email: email }).then(user => {
+    if (user) {
+      // 如果email存在，將不能送出，並回到註冊表單頁面
+      console.log('user already exists')
+      res.render('register', {
+        name,
+        email,
+        password,
+        password2
+      })
+    } else {
+      // 如果email不存在就新增使用者
+      // 新增完成後導回首頁
+      const newUser = new User({
+        name,
+        email,
+        password
+      })
+      newUser
+        .save()
+        .then(user => {
+          res.redirect('/')
+        })
+        .catch(err => console.log(err))
+    }
+  })
+  // res.send('register')
 })
 
 // 登出
