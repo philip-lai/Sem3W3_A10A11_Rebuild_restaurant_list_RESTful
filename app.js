@@ -57,6 +57,7 @@ app.get('/restaurants', (req, res) => {
 app.use('/', require('./routes/home.js'))
 app.use('/restaurants', require('./routes/restaurant.js'))
 app.use('/search', require('./routes/search.js'))
+app.use('/users', require('./routes/user'))
 
 
 //設定express port 3000
