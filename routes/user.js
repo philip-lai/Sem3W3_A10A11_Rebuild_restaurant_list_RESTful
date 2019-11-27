@@ -10,6 +10,10 @@ router.get('/login', (req, res) => {
 
 // 登入檢查
 router.post('/login', (req, res) => {
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/users/login'
+  })(req, res, next)
   // res.send('login')
 })
 
