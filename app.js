@@ -1,43 +1,51 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-
 // 引用 express-handlebars
-const exphbs = require('express-handlebars');
-
+const exphbs = require('express-handlebars')
 // 引用 body-parser
-const bodyParser = require('body-parser');
-
+const bodyParser = require('body-parser')
 // 引用 methodOverride
 const methodOverride = require('method-override')
-
 const session = require('express-session')
 const passport = require('passport')
+
 
 // 告訴 express 使用 handlebars 當作 template engine 並預設 layout 是 main
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-
+// 設定 bodyParser
+app.use(bodyParser.urlencoded({ extended: true }))
 // 設定 method-override
 app.use(methodOverride('_method'))
 
-// 設定 bodyParser
-app.use(bodyParser.urlencoded({ extended: true }));
+// 設定連線到 mongoDB
+mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 
-// setting static files
-app.use(express.static('public'))
+// mongoose 連線後透過mongoose.connection拿到Connection的物件
+const db = mongoose.connection
 
+// 使用passport
 app.use(session({
   secret: 'your secret key',
   resave: false,
   saveUninitialized: true,
 }))
+app.use(passport.initialize())
+app.use(passport.session())
 
-// 設定連線到 mongoDB
-mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
 
-// mongoose 連線後透過mongoose.connection拿到Connection的物件
-const db = mongoose.connection
+// setting static files
+app.use(express.static('public'))
+
+// 載入passport
+require('./config/passport')(passport)
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  // 辨識使用者是否已經登入的變數，讓view可以使用
+  res.locals.isAuthenticated = req.isAuthenticated()
+  next()
+})
 
 // 連線異常
 db.on('error', () => {
@@ -49,15 +57,7 @@ db.once('open', () => {
   console.log('mongodb connected!')
 })
 
-// 使用passport
-app.use(passport.initialize())
-app.use(passport.session())
-// 載入passport
-require('./config/passport')(passport)
-app.use((req, res, next) => {
-  res.locals.user = req.user
-  next()
-})
+
 // 載入restaurant model
 const Restaurant = require('./models/restaurant')
 
