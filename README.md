@@ -19,8 +19,14 @@
 * 編輯現有餐廳
 
 # 畫面示意圖
-#### 首頁，可在此頁面選擇編輯或刪除或檢視現有餐廳，或新增餐廳
-<img src="https://github.com/philip-lai/Sem3W3_A10A11_Rebuild_restaurant_list/blob/master/README_pic/index_page.png?raw=true" width="100%" />
+#### 只要未登入，都一律呈現登入畫面，也可選擇註冊新帳號
+<img src="https://github.com/philip-lai/Sem3W3_A10A11_Rebuild_restaurant_list_RESTful/blob/master/README_pic/login_page.png?raw=true" width="100%" />
+
+#### 註冊頁面
+<img src="https://github.com/philip-lai/Sem3W3_A10A11_Rebuild_restaurant_list_RESTful/blob/master/README_pic/register_page.png?raw=true" width="100%" />
+
+#### 登入後，可在此頁面選擇編輯或刪除或檢視現有餐廳，或新增餐廳
+<img src="https://github.com/philip-lai/Sem3W3_A10A11_Rebuild_restaurant_list_RESTful/blob/master/README_pic/use1_login.png?raw=true" width="100%" />
 
 #### 餐廳資訊頁面
 <img src="https://github.com/philip-lai/Sem3W3_A10A11_Rebuild_restaurant_list/blob/master/README_pic/searchpage.png?raw=true" width="100%" />
@@ -55,6 +61,11 @@
 * node-js
 * mongodb
 * moongose
+* passport
+* passport-local
+* passport-facebook
+* bycrptjs
+* connect-message
 * Robo 3T
 
 
