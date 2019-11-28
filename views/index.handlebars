@@ -20,11 +20,19 @@
           排序選擇
         </button>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="/name_en-asc">依英文店名(A-Z)</a>
-          <a class="dropdown-item" href="/name_en-desc">依英文店名(Z-A)</a>
-          <a class="dropdown-item" href="/category-asc">依餐廳類別</a>
-          <a class="dropdown-item" href="/rating-asc">依餐廳評分(高分優先)</a>
-          <a class="dropdown-item" href="/rating-asc">依餐廳評分(低分優先)</a>
+          <a class="dropdown-item"
+            href="/search?{{#if keyword}}keyword={{keyword}}&{{/if}}sort=name_en-asc">依英文店名(A-Z)</a>
+
+          <a class="dropdown-item"
+            href="/search?{{#if keyword}}keyword={{keyword}}&{{/if}}sort=name_en-desc">依英文店名(Z-A)</a>
+
+          <a class="dropdown-item" href="/search?{{#if keyword}}keyword={{keyword}}&{{/if}}sort=category-asc">依餐廳類別</a>
+
+          <a class="dropdown-item"
+            href="/search?{{#if keyword}}keyword={{keyword}}&{{/if}}sort=rating-asc">依餐廳評分(高分優先)</a>
+
+          <a class="dropdown-item"
+            href="/search?{{#if keyword}}keyword={{keyword}}&{{/if}}sort=rating-desc">依餐廳評分(低分優先)</a>
         </div>
         <a href="/restaurants/new" class="btn btn-outline-dark mt-3 ml-3">新增餐廳</a>
       </div>
